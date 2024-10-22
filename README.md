@@ -1,4 +1,4 @@
-# Bug Tracking-System-Cloud-Computing
+# Bug Tracking System Cloud Computing
 
 Creating a Bug Tracking System using Cloud Computing involves building a web application that tracks bugs or issues within a project, using cloud infrastructure to ensure scalability, availability, and storage. Below are the steps to create such a system, along with example code snippets in Python using Flask as the web framework, SQLAlchemy as the ORM, and AWS (or any cloud provider) for cloud services.
 
