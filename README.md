@@ -22,13 +22,11 @@ Cloud storage for logs, backups, and bug reports.
 **Install Flask, SQLAlchemy, and PostgreSQL (or any preferred database):**
 
 ```bash
-Copy code
 pip install flask flask_sqlalchemy psycopg2-binary
 If using AWS, install the AWS SDK (boto3) for cloud integration:
 ```
 
 ```bash
-Copy code
 pip install boto3
 ```
 
@@ -44,8 +42,8 @@ pip install boto3
 **4. Code Implementation**
 
 **A. Initialize Flask App and Database**
+
 ```python
-Copy code
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -77,12 +75,13 @@ class Bug(db.Model):
 if __name__ == '__main__':
     db.create_all()  # Create tables in the database
     app.run(debug=True)
-**B. Bug Creation and Management**
-**Route for Adding Bugs:**
 ```
 
+**B. Bug Creation and Management**
+
+**Route for Adding Bugs:**
+
 ```python
-Copy code
 from flask import request, jsonify
 
 @app.route('/add_bug', methods=['POST'])
@@ -101,7 +100,6 @@ Route for Updating Bug Status:
 ```
 
 ```python
-Copy code
 @app.route('/update_bug/<int:bug_id>', methods=['PUT'])
 def update_bug(bug_id):
     bug = Bug.query.get_or_404(bug_id)
@@ -114,7 +112,6 @@ Route for Viewing All Bugs:
 ```
 
 ```python
-Copy code
 @app.route('/get_bugs', methods=['GET'])
 def get_bugs():
     bugs = Bug.query.all()
@@ -134,7 +131,6 @@ def get_bugs():
 Implement a simple user authentication system with user roles (Admin, Developer, Tester).
 
 ```python
-Copy code
 from flask import request, jsonify, session
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -176,7 +172,6 @@ For cloud computing, use AWS services like EC2 for hosting, RDS for database man
 **Step 2:** SSH into your EC2 instance and install necessary software:
 
 ```bash
-Copy code
 sudo apt update
 sudo apt install python3-pip
 pip3 install flask flask_sqlalchemy psycopg2-binary
@@ -191,7 +186,6 @@ If you want to upload and store attachments (e.g., screenshots, logs) for each b
 Code to Upload Files to S3:
 
 ```python
-Copy code
 import boto3
 from flask import request
 
@@ -207,7 +201,6 @@ Code to Download Files from S3:
 ```
 
 ```python
-Copy code
 @app.route('/download_file/<string:filename>', methods=['GET'])
 def download_file(filename):
     file_obj = s3.get_object(Bucket=BUCKET_NAME, Key=filename)
@@ -220,7 +213,6 @@ You can create a simple frontend for the bug tracking system using HTML/CSS, Boo
 Example of a bug creation form:
 
 ```html
-Copy code
 <form id="bugForm">
     <label for="title">Bug Title:</label>
     <input type="text" id="title" name="title" required>
